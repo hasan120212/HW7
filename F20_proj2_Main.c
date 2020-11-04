@@ -24,6 +24,10 @@
 extern const Graphics_Image burgersBPP_UNCOMP;
 extern const Graphics_Image menuBPP_UNCOMP;
 extern const Graphics_Image cheese4BPP_UNCOMP;
+extern const Graphics_Image burg4BPP_UNCOMP;
+extern const Graphics_Image pickle8BPP_UNCOMP;
+extern const Graphics_Image tomato8BPP_UNCOMP;
+extern const Graphics_Image lettuce8BPP_UNCOMP;
 // Non-blocking check. Whenever Launchpad S1 is pressed, LED1 turns on.
 static void InitNonBlockingLED()
 {
@@ -292,6 +296,9 @@ void App_mainDrawBox_forBurger(Application * app_p, HAL *context, GFX *gfx_p){
 
 ////////////big box/////////////////////////////////////////
 void App_DrawBox_forBurger(Application * app_p, HAL *context, GFX *gfx_p){
+
+    GFX_print(gfx_p,"$ 0", 0, 0);
+
     //////draw boarders
         Graphics_Rectangle Rect = {boarderx_min, boardery_min, boarderx_max, boardery_max};
         Graphics_drawRectangle(&context ->gfx.context, &Rect);///drawing rectangle
@@ -329,16 +336,20 @@ void App_Cheese_ForBurger(Application*app_p, HAL *context, GFX *gfx_p){
 void App_Patty_ForBurger(Application*app_p, HAL *context, GFX *gfx_p){
 
     GFX_print(gfx_p,"Patty", 2, 8);
+    Graphics_drawImage(&gfx_p->context, &burg4BPP_UNCOMP, 50, 25);
 
 }
 ///////////pickles///////////////////////////////////
 void App_Pickle_forBurger(Application*app_p, HAL *context, GFX *gfx_p){
 
+
+    Graphics_drawImage(&gfx_p->context, &pickle8BPP_UNCOMP, 90, 25);
     GFX_print(gfx_p,"Pickle", 2, 14);
 }
 ///////////Tomatoes////////////////////////
 void App_Tomato_forBurger(Application*app_p, HAL *context, GFX *gfx_p){
 
+    Graphics_drawImage(&gfx_p->context, &tomato8BPP_UNCOMP, 8, 70);
     GFX_print(gfx_p, "Tomato", 7, 0.9);
 
 }
@@ -346,6 +357,8 @@ void App_Tomato_forBurger(Application*app_p, HAL *context, GFX *gfx_p){
 ///////////Lettuce//////////////////////////
 void App_Lettuce_forBurger(Application*app_p, HAL *context, GFX *gfx_p){
 
+
+    Graphics_drawImage(&gfx_p->context, &lettuce8BPP_UNCOMP, 90, 70);
     GFX_print(gfx_p, "Lettuce", 7, 14);
 
 }
